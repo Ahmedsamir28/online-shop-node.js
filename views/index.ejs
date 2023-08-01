@@ -1,5 +1,5 @@
 <%- include('parts/header.ejs')%>
-    <%- include('parts/navbar.ejs')%>
+<%- include('parts/navbar.ejs')%>
 
         <div class="container">
 
@@ -13,18 +13,30 @@
                 </select>
                 <input type="submit" class="btn btn-primary" value="Filter">
             </form>
+
+            <% if (validationError){%>
+            <p class="alert alert-danger">
+                <%= validationError.msg%>
+            </p>
+            <%}%>
+            
             <div class="row">
                 <% for (const product of products){%>
                     <div class=" col col-12 col-md-6 col-lg-4 col-xl-3 " style="margin: auto">
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src=<%= product.image%> alt="Card image cap">
+                            <a href="/product/<%= product._id%>"><img class="card-img-top" src=<%= product.image%> alt="Card image cap"></a>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/product/<%= product._id%>"><%= product.name%></a></h5>
                                 <span>Price: <%= product.price%> $</span>
                                 <span style="display: block;"> <%= product.category%> </span>
-                                <form action="/cart">
-                                    <input type="number" name="amount" id="" class="form-control">
-                                    <input type="submit" value="Add To Cart" id="" class="btn btn-primary">
+
+                                <form action="/cart" method="POST" class="add-to-cart-form">
+                                    <input type="number" name="amount" class="form-control">
+                                    <input type="hidden" name="name" value="<%= product.name%>">
+                                    <input type="hidden" name="price" value="<%= product.price%>">
+                                    <input type="hidden" name="productId" value="<%= product._id%>">
+                                    <input type="hidden" name="redirectTo" value="/">
+                                    <input type="submit" value="Add To Cart"  class="btn btn-primary">
                                 </form>
                             </div>
                         </div>

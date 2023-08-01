@@ -13,7 +13,9 @@ exports.getHome = (req, res, next) => {
     else productsPromise = productsModel.getAllProducts()
     productsPromise.then(products => {
         res.render('index', {
-            products: products
+            products: products,
+            isUser:req.session.userId,
+            validationError: req.flash('validationErrors')[0]
         })
     })
 

@@ -14,18 +14,24 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
+                        <%if(isUser) {%>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/cart">Cart</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/order">Order</a>
                         </li>
+                        <% } else{ %>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/signup">Signup</a>
                         </li>
+                        <% } %>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/add">Add Product</a>
                         </li>
@@ -33,6 +39,13 @@
                             <a class="nav-link" href="/admin/orders">Manage Orders</a>
                         </li>
                     </ul>
+                    <% if(isUser){ %>
+
+                    <form action="/logout" method="POST">
+                        <input type="submit" value="Logout" class="btn btn-danger">
+                    </form>
+                    <% } %>
+
                 </div>
         </div>
     </nav>

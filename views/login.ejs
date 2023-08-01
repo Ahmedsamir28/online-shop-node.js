@@ -1,0 +1,25 @@
+<%- include('parts/header.ejs')%>
+    <%- include('parts/navbar.ejs')%>
+
+        <div class="container text-center">
+            <h3> Login </h3>
+            <form action="/login" method="POST">
+                <input type="email" name="email" class="form-control" placeholder="E-mail">
+                <input type="password" name="password" class="form-control" placeholder="password">
+                <input type="submit" value="Login" class="btn btn-primary">
+            </form>
+            <br>
+
+            <% if(authError){ %>
+                <div class="alert alert-danger">
+                    <%= authError %>
+                </div>
+                <% } %>
+                    <br>
+
+                    <div>
+                        Don't have account ? <a href="/signup">Creat Account</a>
+                    </div>
+        </div>
+
+        <%- include('parts/footer.ejs')%>

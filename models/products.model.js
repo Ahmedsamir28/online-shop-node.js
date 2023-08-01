@@ -19,23 +19,31 @@ exports.getAllProducts=()=>{
 return new Promise((resolve, reject) => {
     mongoose.connect(DB_URL,{ useNewUrlParser: true,useUnifiedTopology: true}).then(()=>{
         return product.find({})
-    }).then(products=>{
+    }).then(product=>{
         mongoose.disconnect()
-        resolve(products)
+        resolve(product)
     }).catch(err=>reject(err))
 })
 }
 
 exports.getProductsByCategory=(category)=>{
-// connect to db
-// get products
-//disconnect
 return new Promise((resolve, reject) => {
     mongoose.connect(DB_URL,{ useNewUrlParser: true,useUnifiedTopology: true}).then(()=>{
         return product.find({category:category})
-    }).then(products=>{
+    }).then(product=>{
         mongoose.disconnect()
-        resolve(products)
+        resolve(product)
+    }).catch(err=>reject(err))
+})
+}
+
+exports.getProductById=(id)=>{
+return new Promise((resolve, reject) => {
+    mongoose.connect(DB_URL,{ useNewUrlParser: true,useUnifiedTopology: true}).then(()=>{
+        return product.findById(id)
+    }).then(product=>{
+        mongoose.disconnect()
+        resolve(product)
     }).catch(err=>reject(err))
 })
 }
