@@ -23,7 +23,7 @@
                                 <td><%= i + 1 %></td>
                                 <td><%= items[i].name %></td>
                                 <td><%= items[i].price %> $</td>
-                                <td><input type="text" name="amount" class="form-control" value="<%= items[i].amount %>"></td>
+                                <td><input type="number" name="amount" class="form-control" value="<%= items[i].amount %>"></td>
                                 <td><%= items[i].price * items[i].amount %> $</td>
                                 <td>
                                     <input type="hidden" name="cartId" value="<%= items[i]._id %>">

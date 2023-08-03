@@ -11,7 +11,7 @@ exports.getSignup = (req, res, next) => {
 
 exports.postSignup = (req, res, next) => {
     if (validationResult(req).isEmpty()) {
-        authModel.creatNewUser(req.body.username, req.body.email, req.body.password)
+        authModel.createNewUser(req.body.username, req.body.email, req.body.password)
             .then(() => res.redirect("/login"))
             .catch(err => {
                 req.flash('authError', err)

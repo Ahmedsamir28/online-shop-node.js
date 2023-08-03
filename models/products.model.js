@@ -17,7 +17,8 @@ exports.getAllProducts=()=>{
 // get products
 //disconnect
 return new Promise((resolve, reject) => {
-    mongoose.connect(DB_URL,{ useNewUrlParser: true,useUnifiedTopology: true}).then(()=>{
+    mongoose.connect(DB_URL,{ useNewUrlParser: true,useUnifiedTopology: true})
+    .then(()=>{
         return product.find({})
     }).then(product=>{
         mongoose.disconnect()

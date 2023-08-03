@@ -5,13 +5,17 @@ const userSchema = mongoose.Schema({
     username: String,
     email: String,
     password: String,
+    isAdmin:{
+        type:Boolean,
+        isAdmin: false
+    }
 })
 
 const User = mongoose.model('user', userSchema)
 
 const DB_URL = 'mongodb+srv://ahmedsamir14401:ahmed28111996@online-shop.yorhfyu.mongodb.net/'
 
-exports.creatNewUser = (username, email, password) => {
+exports.createNewUser = (username, email, password) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
             return User.findOne({ email: email })
@@ -26,7 +30,9 @@ exports.creatNewUser = (username, email, password) => {
             let user = new User({
                 username: username,
                 email: email,
-                password: hashedPassword
+                password: hashedPassword,
+                isAdmin: isAdmin
+                
             })
             return user.save()
         }).then((user) => {

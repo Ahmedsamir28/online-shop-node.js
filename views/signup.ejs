@@ -5,34 +5,14 @@
     <h3> creat acount </h3>
     <form action="/signup" method="POST">
         <input type="text" name="username" class="form-control" placeholder="UserName">
-        <%let userNameError = validationErrors.find(err=>err.param === "username")%>
-        <%if (userNameError){%>
-            <div class="alert alert-danger">
-                <%= userNameError.msg %>
-            </div>
-        <%}%>
+       
         <input type="email" name="email" class="form-control" placeholder="E-mail">
-        <%let emailError = validationErrors.find(err=>err.param === "email")%>
-        <%if (emailError){%>
-            <div class="alert alert-danger">
-                <%= emailError.msg %>
-            </div>
-        <%}%>
+        
         <input type="password" name="password" class="form-control" placeholder="password">
-        <%let passwordError = validationErrors.find(err=>err.param === "password")%>
-        <%if (passwordError){%>
-            <div class="alert alert-danger">
-                <%= passwordError.msg %>
-            </div>
-        <%}%>
+       
         <input type="password" name="Confirm password" class="form-control" placeholder="Confirm password">
-        <%let passwordConfirmError = validationErrors.find(err=>err.param === "passwordConfirm")%>
-        <%if (passwordConfirmError){%>
-            <div class="alert alert-danger">
-                <%= passwordConfirmError.msg %>
-            </div>
-        <%}%>
-        <input type="submit" value="Creat Account" class="btn btn-primary">
+        
+        <input type="submit" value="Create Account" class="btn btn-primary">
     </form>
     <br>
     <% if(authError){ %>
